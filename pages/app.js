@@ -6,8 +6,7 @@ import Button from '../components/Button';
 import Brain from '../states/Brain';
 
 const PageApp = ({ files = [] } = {}) => (
-  <div className="container">
-    <div style={{ height: '50px' }} />
+  <div style={{ padding: '50px' }}>
     <Head />
     <Brain files={files}>
       {({
