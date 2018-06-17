@@ -1,12 +1,23 @@
 const express = require('express');
 const next = require('next');
 const { readFileSync } = require('fs');
+const { execSync } = require('child_process');
 const bodyParser = require('body-parser');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
+
+const execP = cmd =>
+  new Promise((resolve, reject) => {
+    try {
+      const out = execSync(cmd);
+      resolve(out.toString());
+    } catch (e) {
+      reject(e);
+    }
+  });
 
 app.prepare().then(() => {
   const server = express();
@@ -30,7 +41,7 @@ app.prepare().then(() => {
 
   server.post('/delete', (req, res) => {
     const { files } = req.body;
-    res.json({ files });
+    Promise.all(files.map(({ dir }) => execP(`rm -fr ${dir}`))).then(res.send);
   });
 
   server.get('*', (req, res) => {
