@@ -41,7 +41,11 @@ app.prepare().then(() => {
 
   server.post('/delete', (req, res) => {
     const { files } = req.body;
-    Promise.all(files.map(({ dir }) => execP(`rm -fr ${dir}`))).then(res.send);
+    Promise.all(files.map(({ dir }) => execP(`rm -fr ${dir}`)))
+      .then(() => res.send('node_modules deleted'))
+      .catch(e => {
+        res.send(e.toString());
+      });
   });
 
   server.get('*', (req, res) => {

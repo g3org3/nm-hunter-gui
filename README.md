@@ -1,8 +1,8 @@
-# nm-hunter-gui
+# nm-hunter-gui ⚠️ [EXPERIMENTAL] ⚠️
 
-# WARNING
+# WARNING 🚨
 
-`do not use nm-hunet on ~`
+`do not use nm-hunter on your home path '~'`
 
 # Install
 
@@ -19,4 +19,6 @@ npm i
 nm-hunter -s > ~/Desktop/nm-hunter-gui/output.raw
 cd nm-hunter-gui
 npm start
+
+open http://localhost:3000/app
 ```
