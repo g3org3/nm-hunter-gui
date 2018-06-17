@@ -1,5 +1,9 @@
 # nm-hunter-gui
 
+# WARNING
+
+`do not use nm-hunet on ~`
+
 # Install
 
 ```sh
