@@ -25,3 +25,4 @@ open http://localhost:3000/app
 ```
 
 # Preview
+![preview](https://github.com/g3org3/nm-hunter-gui/raw/master/static/app.png)
